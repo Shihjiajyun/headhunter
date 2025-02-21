@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<style>
+  .about-content {
+    background: #f8f9fa;
+    /* 淡灰色背景，提升閱讀體驗 */
+    padding: 60px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    /* 柔和陰影 */
+    max-width: 1200px;
+    margin: 40px auto;
+    text-align: center;
+  }
+
+  /* 標題 */
+  .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #144a99;
+    /* 主視覺藍色 */
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /* 分隔線 */
+  .title-divider {
+    width: 60px;
+    height: 4px;
+    background: #144a99;
+    /* 藍色線條 */
+    margin: 10px auto 20px;
+    border-radius: 2px;
+  }
+
+  /* 內文樣式 */
+  .about-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  /* 響應式設計 */
+  @media (max-width: 768px) {
+    .about-content {
+      padding: 40px 15px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+    }
+
+    .about-description {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<body>
+  <div class="scroll-progress"></div>
+
+  <!-- 導覽列 -->
+  <header class="main-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5c62b68c3e8e591fefcfa1deb0553feadb62ce4d1ca407de48a8326b6ad2a9f4"
+              alt="Company Logo" class="logo-image" width="120" />
+        </a>
+
+        <!-- 漢堡選單按鈕（小螢幕時顯示） -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- 導覽列內容 -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Case Studies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Cart</a>
+            </li>
+          </ul>
+
+          <!-- Contact 按鈕 -->
+          <a href="#" class="btn btn-primary ms-3">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 主視覺 -->
+    <section class="hero-section">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/16c70006eea621bf9b5198ef98d30aa24c9123064e78cd44c5d3ba3c46e29b19"
+          alt="Hero Background" class="hero-image" />
+      <h1 class="hero-title" data-aos="fade-up">
+        Empowering<br />
+        Businesses to<br />
+        Lead, Innovate,<br />
+        and Thrive
+      </h1>
+    </section>
+
+    <!-- 關於我們 -->
+    <section class="about-section">
+      <div class="red-divider">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1c353f6d2d45bdb16876541af6854312c75f4d269d54aeacee6811e1ccc9ef25"
+            alt="Divider" class="divider-image" />
+      </div>
+
+      <!-- About Section -->
+      <div class="about-content">
+        <div class="about-text">
+          <h2 class="section-title">Who We Are</h2>
+          <div class="title-divider"></div>
+
+          <p class="about-description">
+            At <strong>Redconsulto X</strong>, we are a team of seasoned
+            professionals dedicated to driving meaningful change for
+            businesses of all sizes. With expertise spanning strategy,
+            operations, and innovation, we partner with our clients to
+            navigate challenges, seize opportunities, and achieve sustainable
+            growth. Our commitment to excellence, collaboration, and
+            actionable insights ensures we deliver solutions tailored to your
+            unique needs. Whether you're looking to streamline processes,
+            enhance performance, or expand your market reach, we are here to
+            guide you every step of the way. Together, we turn your vision
+            into reality.
+          </p>
+
+          <p class="about-description">
+            We believe that every challenge is an opportunity for
+            transformation. At
+            <strong>Redconsulto X</strong>, we take a personalized,
+            data-driven approach to uncover insights and develop strategies
+            that deliver measurable impact. By deeply understanding your
+            business goals and industry landscape, we craft solutions that are
+            not only innovative but also practical and sustainable. Our
+            collaborative process ensures that you remain at the center of
+            every decision, empowering you to drive change with confidence.
+            Let us help you pave the way to lasting success.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 策略 -->
+    <section class="strategy-section">
+      <div class="container">
+        <div class="strategy-content">
+          <div class="strategy-text" data-aos="fade-right">
+            <h2 class="strategy-title">
+              Expert Strategies<br />
+              for Real Results
+            </h2>
+            <div class="strategy-divider"></div>
+            <p class="strategy-subtitle">
+              We serve all types of business ranging from startups to fortune
+              500 companies
+            </p>
+
+            <div class="strategy-columns">
+              <div class="strategy-column" data-aos="fade-up" data-aos-delay="100">
+                <div class="column-icon">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <h3 class="column-title">Our Vision</h3>
+                <p class="column-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+
+              <div class="strategy-column" data-aos="fade-up" data-aos-delay="200">
+                <div class="column-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="column-title">Our Strategy</h3>
+                <p class="column-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="strategy-image" data-aos="fade-left">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/240fed899846eed5e07caabdc53729e12aef525f7147efcd0cbb49ec7fd70cca"
+                alt="Strategy Illustration" class="image-content" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 服務 -->
+    <section class="services-section">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <h2 class="services-title">Our Professional Services</h2>
+          <div class="services-divider"></div>
+          <p class="services-subtitle">Comprehensive solutions tailored to elevate your business success</p>
+        </div>
+
+        <div class="services-wrapper">
+          <div class="services-grid">
+            <article class="service-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="service-card-inner">
+                <div class="service-icon-wrapper">
+                  <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                </div>
+                <div class="service-content">
+                  <h3 class="service-title">Risk Management</h3>
+                  <div class="service-divider"></div>
+                  <div class="service-image-container">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0e9fcd5cddca59de799c0eb869333b9715da9cd93b6ac22f59b733dbf263d0a7"
+                        alt="Risk Management" class="service-image" />
+                    <div class="service-overlay"></div>
+                  </div>
+                  <p class="service-description">
+                    Identifying potential risks and creating mitigation strategies
+                    to protect the business from financial, operational, or
+                    reputational harm.
+                  </p>
+                  <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Risk Assessment</li>
+                    <li><i class="fas fa-check"></i> Mitigation Planning</li>
+                    <li><i class="fas fa-check"></i> Crisis Management</li>
+                  </ul>
+                  <a href="#" class="service-button">
+                    Learn More
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="service-card-inner">
+                <div class="service-icon-wrapper">
+                  <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                </div>
+                <div class="service-content">
+                  <h3 class="service-title">Marketing Strategy</h3>
+                  <div class="service-divider"></div>
+                  <div class="service-image-container">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5f2658e2a6fb265976d1cc619ffbc79fd1ff355e6fda592f7790b5d8cca22f3c"
+                        alt="Marketing Strategy" class="service-image" />
+                    <div class="service-overlay"></div>
+                  </div>
+                  <p class="service-description">
+                    Crafting comprehensive marketing plans that encompass brand
+                    positioning, digital marketing, customer engagement, and sales
+                    strategies to drive growth and visibility.
+                  </p>
+                  <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Brand Positioning</li>
+                    <li><i class="fas fa-check"></i> Digital Marketing</li>
+                    <li><i class="fas fa-check"></i> Customer Engagement</li>
+                    <li><i class="fas fa-check"></i> Sales Strategies</li>
+                  </ul>
+                  <a href="#" class="service-button">
+                    Learn More
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="service-card" data-aos="fade-up" data-aos-delay="300">
+              <div class="service-card-inner">
+                <div class="service-icon-wrapper">
+                  <div class="service-icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+                </div>
+                <div class="service-content">
+                  <h3 class="service-title">HR Management</h3>
+                  <div class="service-divider"></div>
+                  <div class="service-image-container">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5bc2cffab62a5c543ebb87e6533efe05c366dadfeb2adc43576e14785fbb586"
+                        alt="HR Management" class="service-image" />
+                    <div class="service-overlay"></div>
+                  </div>
+                  <p class="service-description">
+                    Providing support in talent acquisition, employee development,
+                    performance management, and creating a positive workplace
+                    culture to improve employee engagement and retention.
+                  </p>
+                  <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Talent Acquisition</li>
+                    <li><i class="fas fa-check"></i> Employee Development</li>
+                    <li><i class="fas fa-check"></i> Performance Management</li>
+                    <li><i class="fas fa-check"></i> Workplace Culture</li>
+                  </ul>
+                  <a href="#" class="service-button">
+                    Learn More
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="services-background">
+            <div class="background-shape shape-1"></div>
+            <div class="background-shape shape-2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 解決方案 -->
+    <section class="solutions-section">
+      <div class="solutions-container">
+        <div class="solutions-content">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cc0c373a0635a043a0431175b34dc048723650eb976ca21ef661ce586fd5a29d"
+              alt="Solutions" class="solutions-image" />
+
+          <div class="solutions-text">
+            <h2 class="solutions-title">
+              Solutions Tailored<br />
+              to Your Needs
+            </h2>
+            <p class="solutions-subtitle">
+              Our top level consultants will guide you though the steps to get
+              your business ahead
+            </p>
+            <div class="solutions-divider"></div>
+
+            <div class="solutions-columns">
+              <div class="solutions-column">
+                <h3 class="column-title">B2B Strategy</h3>
+                <p class="column-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua.
+                </p>
+              </div>
+
+              <div class="solutions-column">
+                <h3 class="column-title">B2C Strategy</h3>
+                <p class="column-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 案例研究 -->
+    <section class="case-studies-section">
+      <div class="container">
+        <div class="case-studies-header text-center" data-aos="fade-up">
+          <h2 class="section-title">CASE STUDIES</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">Discover how we've helped our clients achieve success</p>
+        </div>
+
+        <div class="case-studies-carousel">
+          <div class="carousel-container">
+            <article class="case-study-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="card-image-wrapper">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/32bf3f438e2ce8ee4bf9c50cdb498e5be3c5fda4f2ac41a9b4f99ab59178e3b4"
+                    alt="Community Website Case Study" class="case-study-image" />
+                <div class="card-overlay"></div>
+              </div>
+              <div class="case-study-content">
+                <h3 class="case-study-title">
+                  Building a Vibrant Community<br />
+                  Website for a Nonprofit
+                </h3>
+                <div class="case-study-cta">
+                  <a href="#" class="view-case-study">
+                    View Case Study
+                    <span class="arrow-icon">→</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="case-study-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="card-image-wrapper">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7f6ded3c1fadb0e2d124dfd7c9fda03002b62cb2d4d95ab7e2189b57dc86ca0e"
+                    alt="Photographer Portfolio Case Study" class="case-study-image" />
+                <div class="card-overlay"></div>
+              </div>
+              <div class="case-study-content">
+                <h3 class="case-study-title">
+                  A Photographer's Portfolio That<br />
+                  Speaks Volumes
+                </h3>
+                <div class="case-study-cta">
+                  <a href="#" class="view-case-study">
+                    View Case Study
+                    <span class="arrow-icon">→</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="carousel-navigation">
+            <button class="nav-button prev" aria-label="Previous slide">
+              <span class="nav-icon">←</span>
+            </button>
+            <button class="nav-button next" aria-label="Next slide">
+              <span class="nav-icon">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-background-wrapper">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e35c3f96bba5f1c7fe474722ce5b66fb022bef85c642d0831e8eb23a9056782c"
+            alt="CTA Background" class="cta-background" />
+        <div class="cta-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="cta-content" data-aos="fade-up">
+          <h2 class="cta-title">Discover How We Can Help</h2>
+          <p class="cta-description">
+            Ready to grow? Let's create a strategy tailored to your success. Get
+            started today!
+          </p>
+          <a href="#" class="cta-button">Contact Us Today</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // 滾動進度條
+    window.addEventListener("scroll", () => {
+      const scrollProgress = document.querySelector(".scroll-progress");
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = window.scrollY;
+
+      scrollProgress.style.transform = `scaleX(${scrolled / scrollable})`;
+    });
+
+    // 導航欄滾動效果
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector(".main-header");
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+    // 初始化AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      window.addEventListener("scroll", function () {
+        var header = document.querySelector(".main-header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+    });
+  </script>
+</body>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- 公司資訊 -->
+      <div class="footer-company-info">
+        <a href="#" class="footer-logo">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f23d0a386dc5b0f3814ef099441856d5b4fe03427b23b79b9197ebee7db6e053"
+              alt="RedConsulto" class="logo-image" />
+        </a>
+        <p class="company-description">
+          專業的商業顧問服務，為您的企業提供創新解決方案，助您實現業務增長。
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-link" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 服務項目 -->
+      <div class="footer-links-column">
+        <h3 class="footer-title">服務項目</h3>
+        <nav class="footer-nav">
+          <a href="#" class="footer-link">風險管理</a>
+          <a href="#" class="footer-link">市場策略</a>
+          <a href="#" class="footer-link">人力資源</a>
+          <a href="#" class="footer-link">數位轉型</a>
+          <a href="#" class="footer-link">企業諮詢</a>
+        </nav>
+      </div>
+
+      <!-- 快速連結 -->
+      <div class="footer-links-column">
+        <h3 class="footer-title">快速連結</h3>
+        <nav class="footer-nav">
+          <a href="#" class="footer-link">關於我們</a>
+          <a href="#" class="footer-link">最新消息</a>
+          <a href="#" class="footer-link">成功案例</a>
+          <a href="#" class="footer-link">聯絡我們</a>
+          <a href="#" class="footer-link">常見問題</a>
+        </nav>
+      </div>
+
+      <!-- 聯絡資訊 -->
+      <div class="footer-contact">
+        <h3 class="footer-title">聯絡我們</h3>
+        <div class="contact-info">
+          <p><i class="fas fa-map-marker-alt"></i> 台北市信義區信義路五段7號</p>
+          <p><i class="fas fa-phone"></i> (02) 2345-6789</p>
+          <p><i class="fas fa-envelope"></i> info@redconsulto.com</p>
+        </div>
+        <div class="footer-newsletter">
+          <h4>訂閱電子報</h4>
+          <form class="newsletter-form">
+            <input type="email" placeholder="請輸入您的Email" required>
+            <button type="submit">訂閱</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <p class="copyright">© 2024 RedConsulto. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#" class="legal-link">隱私政策</a>
+        <a href="#" class="legal-link">服務條款</a>
+        <a href="#" class="legal-link">Cookie政策</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</html>
