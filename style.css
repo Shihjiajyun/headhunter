@@ -1191,10 +1191,6 @@ img {
 }
 
 @media (min-width: 992px) {
-  .services-grid {
-    grid-width: repeat(3, 1fr);
-  }
-
   .hero-title {
     font-size: 106px;
     line-height: 127px;
