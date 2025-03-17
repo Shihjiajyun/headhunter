@@ -4,67 +4,514 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>菁英人才顧問 - 專業獵頭服務</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-</head>
-<style>
-  .about-content {
-    background: #f8f9fa;
-    /* 淡灰色背景，提升閱讀體驗 */
-    padding: 60px 20px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    /* 柔和陰影 */
-    max-width: 1200px;
-    margin: 40px auto;
-    text-align: center;
-  }
-
-  /* 標題 */
-  .section-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #144a99;
-    /* 主視覺藍色 */
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  /* 分隔線 */
-  .title-divider {
-    width: 60px;
-    height: 4px;
-    background: #144a99;
-    /* 藍色線條 */
-    margin: 10px auto 20px;
-    border-radius: 2px;
-  }
-
-  /* 內文樣式 */
-  .about-description {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #333;
-    margin-bottom: 20px;
-  }
-
-  /* 響應式設計 */
-  @media (max-width: 768px) {
-    .about-content {
-      padding: 40px 15px;
+  
+  <!-- 添加Font Awesome图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <style>
+    :root {
+      --primary-color: #0A1931; /* 深藍色 */
+      --secondary-color: #1B2CC1; /* 海軍藍 */
+      --light-gray: #C0C0C0; /* 銀灰色 */
+      --platinum: #E5E5E5; /* 鉑金色 */
+      --white: #FFFFFF; /* 白色 */
+      --text-color: #333333;
     }
-
-    .section-title {
-      font-size: 1.8rem;
+    
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--text-color);
     }
-
-    .about-description {
+    
+    /* 導覽列樣式 */
+    .main-header {
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.4s ease;
+    }
+    
+    .main-header:not(.scrolled) {
+      background-color: rgba(10, 25, 49, 0.2); /* 透明深藍色 */
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    
+    .main-header.scrolled {
+      background-color: var(--primary-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-nav .nav-link {
+      color: var(--white) !important;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      color: var(--light-gray) !important;
+    }
+    
+    .btn-primary {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      color: var(--white);
+      font-weight: 500;
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: #151f8a;
+      border-color: #151f8a;
+      transform: translateY(-2px);
+    }
+    
+    /* 主視覺區域優化 */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7); /* 調暗圖片以提高文字可讀性 */
+    }
+    
+    /* 主視覺覆蓋層 */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, rgba(10, 25, 49, 0.2), rgba(27, 44, 193, 0.1));
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+    
+    .hero-title-wrapper {
+      position: relative;
+    }
+    
+    /* 覆蓋原有的 hero-title 樣式 */
+    .hero-title {
+      position: relative !important; /* 覆蓋絕對定位 */
+      font-size: 2.5rem;
+      line-height: 1.3;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      top: auto !important; /* 覆蓋原有的 top 值 */
+      left: auto !important; /* 覆蓋原有的 left 值 */
+      transform: none !important; /* 覆蓋原有的 transform */
+    }
+    
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--platinum);
+      margin-bottom: 40px;
+      max-width: 500px;
+    }
+    
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .hero-button {
+      padding: 12px 30px;
+      background-color: var(--secondary-color);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .hero-button:hover {
+      background-color: #151f8a;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hero-button-secondary {
+      padding: 12px 30px;
+      background-color: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .hero-button-secondary:hover {
+      background-color: var(--white);
+      color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* 打字特效相關樣式 */
+    .typing-text {
+      display: inline-block;
+      position: relative;
+      color: var(--white);
+      min-height: 1.5em; /* 確保即使沒有文字也有高度 */
+    }
+    
+    .typing-text::after {
+      content: '|';
+      position: absolute;
+      right: -4px; /* 調整游標位置 */
+      top: 0; /* 確保游標在頂部對齊 */
+      color: var(--white);
+      animation: blink 0.7s infinite;
+    }
+    
+    /* 當文字為空時，游標位置調整 */
+    .typing-text:empty::after {
+      right: 0;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .hero-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+      
+      .hero-button, .hero-button-secondary {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+      
+      .hero-title-wrapper {
+        margin-left: 5%;
+      }
+    }
+    
+    /* 服務區塊優化 */
+    .services-section {
+      position: relative;
+      padding: 100px 0;
+      background: var(--platinum);
+      overflow: hidden;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .service-card {
+      height: 100%;
+      display: flex;
+    }
+    
+    .service-card-inner {
+      background-color: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border: none;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .service-card-inner:hover {
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      transform: translateY(-10px);
+    }
+    
+    .service-card-inner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--secondary-color);
+      transition: all 0.3s ease;
+    }
+    
+    .service-card-inner:hover::before {
+      width: 8px;
+    }
+    
+    .service-icon-wrapper {
+      margin-bottom: 25px;
+      position: relative;
+    }
+    
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--secondary-color);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(27, 44, 193, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .service-card-inner:hover .service-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .service-icon i {
+      font-size: 28px;
+      color: var(--white);
+    }
+    
+    .service-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .service-title {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    
+    .service-divider {
+      width: 50px;
+      height: 3px;
+      background: var(--secondary-color);
+      margin-bottom: 20px;
+      border-radius: 2px;
+    }
+    
+    .service-image-container {
+      position: relative;
+      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 200px;
+    }
+    
+    .service-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .service-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(10, 25, 49, 0.1), rgba(10, 25, 49, 0.7));
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    
+    .service-card-inner:hover .service-image {
+      transform: scale(1.1);
+    }
+    
+    .service-card-inner:hover .service-overlay {
+      opacity: 0.9;
+    }
+    
+    .service-description {
       font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 20px;
     }
-  }
-</style>
+    
+    .service-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 25px 0;
+    }
+    
+    .service-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      color: #555;
+      font-size: 0.95rem;
+    }
+    
+    .service-features i {
+      color: var(--secondary-color);
+      font-size: 14px;
+    }
+    
+    .service-button {
+      margin-top: auto; /* 將按鈕推到底部 */
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 25px;
+      background: var(--primary-color);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      align-self: flex-start;
+    }
+    
+    .service-button:hover {
+      background: var(--secondary-color);
+      transform: translateX(5px);
+      color: var(--white);
+    }
+    
+    /* 案例研究樣式 */
+    .case-study-card {
+      background-color: var(--white);
+      border: 1px solid var(--platinum);
+    }
+    
+    .card-overlay {
+      background: linear-gradient(to bottom, rgba(10, 25, 49, 0.1), rgba(10, 25, 49, 0.8));
+    }
+    
+    .view-case-study {
+      color: var(--secondary-color);
+    }
+    
+    /* CTA 樣式 */
+    .cta-overlay {
+      background: linear-gradient(to right, rgba(10, 25, 49, 0.9), rgba(27, 44, 193, 0.8));
+    }
+    
+    .cta-button {
+      background-color: var(--white);
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .cta-button:hover {
+      background-color: var(--light-gray);
+    }
+    
+    /* 頁腳樣式調整 */
+    .main-footer {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+    
+    .footer-title:after {
+      background-color: var(--secondary-color);
+    }
+    
+    .footer-link i {
+      color: var(--secondary-color);
+    }
+    
+    .social-link:hover {
+      background-color: var(--secondary-color);
+    }
+    
+    .newsletter-form button {
+      background-color: var(--secondary-color);
+    }
+    
+    .newsletter-form button:hover {
+      background-color: #151f8a;
+    }
+    
+    /* 滾動進度條 */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary-color);
+      transform-origin: left;
+      transform: scaleX(0);
+      z-index: 2000;
+    }
+
+    /* 添加平滑滾動效果 */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* 調整滾動位置，考慮固定導覽列高度 */
+    section {
+      scroll-margin-top: 80px; /* 根據導覽列高度調整 */
+    }
+
+    /* 導覽列活動項目樣式 */
+    .navbar-nav .nav-link.active {
+      color: var(--light-gray) !important;
+      position: relative;
+    }
+
+    .navbar-nav .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 2px;
+      background-color: var(--light-gray);
+    }
+  </style>
+</head>
 
 <body>
   <div class="scroll-progress"></div>
@@ -76,7 +523,7 @@
         <!-- Logo -->
         <a class="navbar-brand" href="#">
           <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5c62b68c3e8e591fefcfa1deb0553feadb62ce4d1ca407de48a8326b6ad2a9f4"
-              alt="Company Logo" class="logo-image" width="120" />
+              alt="公司標誌" class="logo-image" width="120" />
         </a>
 
         <!-- 漢堡選單按鈕（小螢幕時顯示） -->
@@ -89,27 +536,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Home</a>
+              <a class="nav-link text-white" href="#home">首頁</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Services</a>
+              <a class="nav-link text-white" href="#about">關於我們</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Case Studies</a>
+              <a class="nav-link text-white" href="#services">服務項目</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Pricing</a>
+              <a class="nav-link text-white" href="#cases">成功案例</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">Cart</a>
+              <a class="nav-link text-white" href="#contact">聯絡我們</a>
             </li>
           </ul>
 
           <!-- Contact 按鈕 -->
-          <a href="#" class="btn btn-primary ms-3">Contact</a>
+          <a href="#contact" class="btn btn-primary ms-3">聯絡我們</a>
         </div>
       </div>
     </nav>
@@ -117,55 +561,41 @@
 
   <main>
     <!-- 主視覺 -->
-    <section class="hero-section">
+    <section id="home" class="hero-section">
       <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/16c70006eea621bf9b5198ef98d30aa24c9123064e78cd44c5d3ba3c46e29b19"
-          alt="Hero Background" class="hero-image" />
-      <h1 class="hero-title" data-aos="fade-up">
-        Empowering<br />
-        Businesses to<br />
-        Lead, Innovate,<br />
-        and Thrive
-      </h1>
+          alt="主視覺背景" class="hero-image" />
+      <div class="hero-overlay"></div>
+      
+      <div class="container hero-content">
+        <div class="hero-title-wrapper" data-aos="fade-up">
+          <h1 class="hero-title">
+            <span class="typing-text" id="typing-text"></span>
+          </h1>
+          <p class="hero-subtitle">專業的獵頭顧問服務，為企業尋找高階人才，為專業人士提供最佳的職涯發展機會。</p>
+          <div class="hero-cta">
+            <a href="#" class="hero-button">
+              <i class="fas fa-search"></i> 尋找人才
+            </a>
+            <a href="#" class="hero-button-secondary">了解我們的服務</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- 關於我們 -->
-    <section class="about-section">
-      <div class="red-divider">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1c353f6d2d45bdb16876541af6854312c75f4d269d54aeacee6811e1ccc9ef25"
-            alt="Divider" class="divider-image" />
-      </div>
-
+    <section id="about" class="about-section">
       <!-- About Section -->
-      <div class="about-content">
+      <div class="container about-content">
         <div class="about-text">
-          <h2 class="section-title">Who We Are</h2>
+          <h2 class="section-title">關於我們</h2>
           <div class="title-divider"></div>
 
           <p class="about-description">
-            At <strong>Redconsulto X</strong>, we are a team of seasoned
-            professionals dedicated to driving meaningful change for
-            businesses of all sizes. With expertise spanning strategy,
-            operations, and innovation, we partner with our clients to
-            navigate challenges, seize opportunities, and achieve sustainable
-            growth. Our commitment to excellence, collaboration, and
-            actionable insights ensures we deliver solutions tailored to your
-            unique needs. Whether you're looking to streamline processes,
-            enhance performance, or expand your market reach, we are here to
-            guide you every step of the way. Together, we turn your vision
-            into reality.
+            在<strong>菁英人才顧問</strong>，我們專注於高端獵才服務，協助企業快速找到適合的關鍵人才，助力企業發展。同時，我們也為專業人士提供最佳的職涯機會，確保您的才能獲得應有的價值。我們的顧問團隊擁有豐富的產業經驗，深入了解市場趨勢，透過專業評估與精準配對，為企業與人才提供最優質的解決方案。
           </p>
 
           <p class="about-description">
-            We believe that every challenge is an opportunity for
-            transformation. At
-            <strong>Redconsulto X</strong>, we take a personalized,
-            data-driven approach to uncover insights and develop strategies
-            that deliver measurable impact. By deeply understanding your
-            business goals and industry landscape, we craft solutions that are
-            not only innovative but also practical and sustainable. Our
-            collaborative process ensures that you remain at the center of
-            every decision, empowering you to drive change with confidence.
-            Let us help you pave the way to lasting success.
+            無論是跨國企業、新創公司，還是尋求轉職的菁英人才，我們都致力於提供高效且客製化的服務，讓合適的人才與企業無縫接軌。我們的核心價值是「專業、信任、效率」，透過高度客製化的服務模式，確保每一次的招聘決策都是經過縝密分析與策略規劃。
           </p>
         </div>
       </div>
@@ -176,14 +606,13 @@
       <div class="container">
         <div class="strategy-content">
           <div class="strategy-text" data-aos="fade-right">
-            <h2 class="strategy-title">
-              Expert Strategies<br />
-              for Real Results
+            <h2 class="section-title">
+              專業獵才策略<br />
+              實現人才價值
             </h2>
             <div class="strategy-divider"></div>
             <p class="strategy-subtitle">
-              We serve all types of business ranging from startups to fortune
-              500 companies
+              我們服務各類型企業，從新創公司到跨國企業集團
             </p>
 
             <div class="strategy-columns">
@@ -191,10 +620,9 @@
                 <div class="column-icon">
                   <i class="fas fa-eye"></i>
                 </div>
-                <h3 class="column-title">Our Vision</h3>
+                <h3 class="column-title">我們的願景</h3>
                 <p class="column-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  成為亞太地區最值得信賴的人才顧問夥伴，透過專業的獵頭服務，協助企業建立卓越團隊，同時為專業人才創造最佳的職涯發展機會。
                 </p>
               </div>
 
@@ -202,10 +630,9 @@
                 <div class="column-icon">
                   <i class="fas fa-chart-line"></i>
                 </div>
-                <h3 class="column-title">Our Strategy</h3>
+                <h3 class="column-title">我們的策略</h3>
                 <p class="column-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  結合深入的產業分析、精準的人才評估和全面的市場洞察，為客戶提供量身定制的獵頭解決方案，確保每一次的人才配對都能創造最大價值。
                 </p>
               </div>
             </div>
@@ -213,19 +640,19 @@
 
           <div class="strategy-image" data-aos="fade-left">
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/240fed899846eed5e07caabdc53729e12aef525f7147efcd0cbb49ec7fd70cca"
-                alt="Strategy Illustration" class="image-content" />
+                alt="獵頭策略圖示" class="image-content" />
           </div>
         </div>
       </div>
     </section>
 
     <!-- 服務 -->
-    <section class="services-section">
+    <section id="services" class="services-section">
       <div class="container">
         <div class="section-header text-center" data-aos="fade-up">
-          <h2 class="services-title">Our Professional Services</h2>
+          <h2 class="services-title">我們的專業服務</h2>
           <div class="services-divider"></div>
-          <p class="services-subtitle">Comprehensive solutions tailored to elevate your business success</p>
+          <p class="services-subtitle">量身定制的人才解決方案，滿足您的招聘需求</p>
         </div>
 
         <div class="services-wrapper">
@@ -234,29 +661,27 @@
               <div class="service-card-inner">
                 <div class="service-icon-wrapper">
                   <div class="service-icon">
-                    <i class="fas fa-shield-alt"></i>
+                    <i class="fas fa-user-tie"></i>
                   </div>
                 </div>
                 <div class="service-content">
-                  <h3 class="service-title">Risk Management</h3>
+                  <h3 class="service-title">高階人才獵聘</h3>
                   <div class="service-divider"></div>
                   <div class="service-image-container">
                     <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0e9fcd5cddca59de799c0eb869333b9715da9cd93b6ac22f59b733dbf263d0a7"
-                        alt="Risk Management" class="service-image" />
+                        alt="高階人才獵聘" class="service-image" />
                     <div class="service-overlay"></div>
                   </div>
                   <p class="service-description">
-                    Identifying potential risks and creating mitigation strategies
-                    to protect the business from financial, operational, or
-                    reputational harm.
+                    專注於尋找企業高階管理人才，包括執行長、總經理、副總裁等關鍵領導職位，協助企業建立強大的領導團隊。
                   </p>
                   <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Risk Assessment</li>
-                    <li><i class="fas fa-check"></i> Mitigation Planning</li>
-                    <li><i class="fas fa-check"></i> Crisis Management</li>
+                    <li><i class="fas fa-check"></i> 高階主管招聘</li>
+                    <li><i class="fas fa-check"></i> 董事會成員推薦</li>
+                    <li><i class="fas fa-check"></i> 繼任計劃諮詢</li>
                   </ul>
                   <a href="#" class="service-button">
-                    Learn More
+                    了解更多
                     <i class="fas fa-arrow-right"></i>
                   </a>
                 </div>
@@ -267,30 +692,28 @@
               <div class="service-card-inner">
                 <div class="service-icon-wrapper">
                   <div class="service-icon">
-                    <i class="fas fa-chart-line"></i>
+                    <i class="fas fa-laptop-code"></i>
                   </div>
                 </div>
                 <div class="service-content">
-                  <h3 class="service-title">Marketing Strategy</h3>
+                  <h3 class="service-title">專業技術人才</h3>
                   <div class="service-divider"></div>
                   <div class="service-image-container">
                     <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5f2658e2a6fb265976d1cc619ffbc79fd1ff355e6fda592f7790b5d8cca22f3c"
-                        alt="Marketing Strategy" class="service-image" />
+                        alt="專業技術人才" class="service-image" />
                     <div class="service-overlay"></div>
                   </div>
                   <p class="service-description">
-                    Crafting comprehensive marketing plans that encompass brand
-                    positioning, digital marketing, customer engagement, and sales
-                    strategies to drive growth and visibility.
+                    為科技、金融、醫療等領域尋找專業技術人才，包括工程師、數據科學家、產品經理等關鍵職位，滿足企業創新發展需求。
                   </p>
                   <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Brand Positioning</li>
-                    <li><i class="fas fa-check"></i> Digital Marketing</li>
-                    <li><i class="fas fa-check"></i> Customer Engagement</li>
-                    <li><i class="fas fa-check"></i> Sales Strategies</li>
+                    <li><i class="fas fa-check"></i> IT與數位人才</li>
+                    <li><i class="fas fa-check"></i> 研發與工程專才</li>
+                    <li><i class="fas fa-check"></i> 產品與專案管理</li>
+                    <li><i class="fas fa-check"></i> 數據分析專家</li>
                   </ul>
                   <a href="#" class="service-button">
-                    Learn More
+                    了解更多
                     <i class="fas fa-arrow-right"></i>
                   </a>
                 </div>
@@ -301,30 +724,28 @@
               <div class="service-card-inner">
                 <div class="service-icon-wrapper">
                   <div class="service-icon">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-handshake"></i>
                   </div>
                 </div>
                 <div class="service-content">
-                  <h3 class="service-title">HR Management</h3>
+                  <h3 class="service-title">人才顧問服務</h3>
                   <div class="service-divider"></div>
                   <div class="service-image-container">
                     <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5bc2cffab62a5c543ebb87e6533efe05c366dadfeb2adc43576e14785fbb586"
-                        alt="HR Management" class="service-image" />
+                        alt="人才顧問服務" class="service-image" />
                     <div class="service-overlay"></div>
                   </div>
                   <p class="service-description">
-                    Providing support in talent acquisition, employee development,
-                    performance management, and creating a positive workplace
-                    culture to improve employee engagement and retention.
+                    提供全方位的人才管理諮詢，包括組織架構規劃、薪資福利評估、人才發展策略等，協助企業建立健全的人才管理體系。
                   </p>
                   <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Talent Acquisition</li>
-                    <li><i class="fas fa-check"></i> Employee Development</li>
-                    <li><i class="fas fa-check"></i> Performance Management</li>
-                    <li><i class="fas fa-check"></i> Workplace Culture</li>
+                    <li><i class="fas fa-check"></i> 組織架構規劃</li>
+                    <li><i class="fas fa-check"></i> 薪資福利評估</li>
+                    <li><i class="fas fa-check"></i> 人才發展策略</li>
+                    <li><i class="fas fa-check"></i> 績效管理系統</li>
                   </ul>
                   <a href="#" class="service-button">
-                    Learn More
+                    了解更多
                     <i class="fas fa-arrow-right"></i>
                   </a>
                 </div>
@@ -342,38 +763,35 @@
 
     <!-- 解決方案 -->
     <section class="solutions-section">
-      <div class="solutions-container">
+      <div class="solutions-container container">
         <div class="solutions-content">
           <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cc0c373a0635a043a0431175b34dc048723650eb976ca21ef661ce586fd5a29d"
-              alt="Solutions" class="solutions-image" />
+              alt="解決方案" class="solutions-image" />
 
           <div class="solutions-text">
-            <h2 class="solutions-title">
-              Solutions Tailored<br />
-              to Your Needs
+            <h2 class="section-title">
+              量身定制的<br />
+              獵頭解決方案
             </h2>
+            
             <p class="solutions-subtitle">
-              Our top level consultants will guide you though the steps to get
-              your business ahead
+              我們的資深顧問將指導您完成每一步驟，確保招聘流程順暢高效
             </p>
-            <div class="solutions-divider"></div>
+
+            <div class="solutions-divider my-3"></div>
 
             <div class="solutions-columns">
               <div class="solutions-column">
-                <h3 class="column-title">B2B Strategy</h3>
+                <h3 class="column-title">企業招聘服務</h3>
                 <p class="column-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua.
+                  為企業提供全方位的招聘解決方案，從需求分析、人才搜尋、候選人評估到面試安排，一站式服務確保您能快速找到最合適的人才。
                 </p>
               </div>
 
               <div class="solutions-column">
-                <h3 class="column-title">B2C Strategy</h3>
+                <h3 class="column-title">求職者服務</h3>
                 <p class="column-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua.
+                  為專業人才提供職涯規劃與發展建議，協助您找到最適合的工作機會，並提供面試準備、薪資談判等全方位支持。
                 </p>
               </div>
             </div>
@@ -383,12 +801,12 @@
     </section>
 
     <!-- 案例研究 -->
-    <section class="case-studies-section">
+    <section id="cases" class="case-studies-section">
       <div class="container">
         <div class="case-studies-header text-center" data-aos="fade-up">
-          <h2 class="section-title">CASE STUDIES</h2>
+          <h2 class="section-title">成功案例</h2>
           <div class="section-divider"></div>
-          <p class="section-subtitle">Discover how we've helped our clients achieve success</p>
+          <p class="section-subtitle">探索我們如何幫助客戶找到理想人才</p>
         </div>
 
         <div class="case-studies-carousel">
@@ -396,17 +814,17 @@
             <article class="case-study-card" data-aos="fade-up" data-aos-delay="100">
               <div class="card-image-wrapper">
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/32bf3f438e2ce8ee4bf9c50cdb498e5be3c5fda4f2ac41a9b4f99ab59178e3b4"
-                    alt="Community Website Case Study" class="case-study-image" />
+                    alt="科技公司高階主管招聘案例" class="case-study-image" />
                 <div class="card-overlay"></div>
               </div>
               <div class="case-study-content">
                 <h3 class="case-study-title">
-                  Building a Vibrant Community<br />
-                  Website for a Nonprofit
+                  為科技新創公司<br />
+                  招募關鍵技術主管
                 </h3>
                 <div class="case-study-cta">
                   <a href="#" class="view-case-study">
-                    View Case Study
+                    查看案例
                     <span class="arrow-icon">→</span>
                   </a>
                 </div>
@@ -416,17 +834,17 @@
             <article class="case-study-card" data-aos="fade-up" data-aos-delay="200">
               <div class="card-image-wrapper">
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7f6ded3c1fadb0e2d124dfd7c9fda03002b62cb2d4d95ab7e2189b57dc86ca0e"
-                    alt="Photographer Portfolio Case Study" class="case-study-image" />
+                    alt="跨國企業人才招聘案例" class="case-study-image" />
                 <div class="card-overlay"></div>
               </div>
               <div class="case-study-content">
                 <h3 class="case-study-title">
-                  A Photographer's Portfolio That<br />
-                  Speaks Volumes
+                  協助跨國企業<br />
+                  建立台灣研發中心團隊
                 </h3>
                 <div class="case-study-cta">
                   <a href="#" class="view-case-study">
-                    View Case Study
+                    查看案例
                     <span class="arrow-icon">→</span>
                   </a>
                 </div>
@@ -447,20 +865,19 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section id="contact" class="cta-section">
       <div class="cta-background-wrapper">
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e35c3f96bba5f1c7fe474722ce5b66fb022bef85c642d0831e8eb23a9056782c"
-            alt="CTA Background" class="cta-background" />
+            alt="CTA背景" class="cta-background" />
         <div class="cta-overlay"></div>
       </div>
       <div class="container">
         <div class="cta-content" data-aos="fade-up">
-          <h2 class="cta-title">Discover How We Can Help</h2>
+          <h2 class="cta-title">尋找理想人才或職位？</h2>
           <p class="cta-description">
-            Ready to grow? Let's create a strategy tailored to your success. Get
-            started today!
+            無論您是企業尋找關鍵人才，還是專業人士尋求職涯發展，我們都能提供專業協助。
           </p>
-          <a href="#" class="cta-button">Contact Us Today</a>
+          <a href="#" class="cta-button">立即聯繫我們</a>
         </div>
       </div>
     </section>
@@ -509,6 +926,88 @@
       });
     });
   </script>
+
+  <script>
+    // 打字特效
+    document.addEventListener('DOMContentLoaded', function() {
+      const textElement = document.getElementById('typing-text');
+      const phrases = [
+        '連結企業與人才',
+        '打造卓越團隊',
+        '成就職涯發展',
+        '菁英人才顧問'
+      ];
+      
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let typingSpeed = 100; // 打字速度(毫秒)
+      
+      function typeText() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+          // 刪除文字
+          textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+          charIndex--;
+          typingSpeed = 50; // 刪除速度較快
+        } else {
+          // 添加文字
+          textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+          charIndex++;
+          typingSpeed = 100; // 打字速度較慢
+        }
+        
+        // 如果完成打字
+        if (!isDeleting && charIndex === currentPhrase.length) {
+          // 暫停一下再開始刪除
+          typingSpeed = 1500; // 暫停1.5秒
+          isDeleting = true;
+        } 
+        // 如果完成刪除
+        else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length; // 切換到下一個短語
+          typingSpeed = 500; // 切換短語前暫停0.5秒
+        }
+        
+        setTimeout(typeText, typingSpeed);
+      }
+      
+      // 開始打字特效
+      typeText();
+    });
+  </script>
+
+  <script>
+    // 添加導覽列活動項目高亮顯示
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+      
+      function highlightNavItem() {
+        const scrollPosition = window.scrollY;
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${sectionId}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', highlightNavItem);
+      highlightNavItem(); // 初始化
+    });
+  </script>
 </body>
 
 <footer class="main-footer">
@@ -518,10 +1017,10 @@
       <div class="footer-company-info">
         <a href="#" class="footer-logo">
           <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f23d0a386dc5b0f3814ef099441856d5b4fe03427b23b79b9197ebee7db6e053"
-              alt="RedConsulto" class="logo-image" />
+              alt="菁英人才顧問" class="logo-image" />
         </a>
         <p class="company-description">
-          專業的商業顧問服務，為您的企業提供創新解決方案，助您實現業務增長。
+          專業的獵頭顧問服務，為企業尋找高階人才，為專業人士提供最佳的職涯發展機會。透過精準的市場分析與高效的招聘策略，我們連結企業與人才，打造雙贏的合作模式。
         </p>
         <div class="footer-social">
           <a href="#" class="social-link" aria-label="Facebook">
@@ -543,11 +1042,11 @@
       <div class="footer-links-column">
         <h3 class="footer-title">服務項目</h3>
         <nav class="footer-nav">
-          <a href="#" class="footer-link">風險管理</a>
-          <a href="#" class="footer-link">市場策略</a>
-          <a href="#" class="footer-link">人力資源</a>
-          <a href="#" class="footer-link">數位轉型</a>
-          <a href="#" class="footer-link">企業諮詢</a>
+          <a href="#" class="footer-link"><i class="fas fa-user-tie"></i> 高階人才獵聘</a>
+          <a href="#" class="footer-link"><i class="fas fa-laptop-code"></i> 專業技術人才</a>
+          <a href="#" class="footer-link"><i class="fas fa-handshake"></i> 人才顧問服務</a>
+          <a href="#" class="footer-link"><i class="fas fa-search"></i> 人才評估</a>
+          <a href="#" class="footer-link"><i class="fas fa-briefcase"></i> 職涯諮詢</a>
         </nav>
       </div>
 
@@ -555,11 +1054,11 @@
       <div class="footer-links-column">
         <h3 class="footer-title">快速連結</h3>
         <nav class="footer-nav">
-          <a href="#" class="footer-link">關於我們</a>
-          <a href="#" class="footer-link">最新消息</a>
-          <a href="#" class="footer-link">成功案例</a>
-          <a href="#" class="footer-link">聯絡我們</a>
-          <a href="#" class="footer-link">常見問題</a>
+          <a href="#" class="footer-link"><i class="fas fa-info-circle"></i> 關於我們</a>
+          <a href="#" class="footer-link"><i class="fas fa-newspaper"></i> 最新職缺</a>
+          <a href="#" class="footer-link"><i class="fas fa-trophy"></i> 成功案例</a>
+          <a href="#" class="footer-link"><i class="fas fa-envelope"></i> 聯絡我們</a>
+          <a href="#" class="footer-link"><i class="fas fa-question-circle"></i> 常見問題</a>
         </nav>
       </div>
 
@@ -569,14 +1068,16 @@
         <div class="contact-info">
           <p><i class="fas fa-map-marker-alt"></i> 台北市信義區信義路五段7號</p>
           <p><i class="fas fa-phone"></i> (02) 2345-6789</p>
-          <p><i class="fas fa-envelope"></i> info@redconsulto.com</p>
+          <p><i class="fas fa-envelope"></i> contact@elitetalent.com.tw</p>
+          <p><i class="fas fa-clock"></i> 週一至週五 9:00-18:00</p>
         </div>
         <div class="footer-newsletter">
-          <h4>訂閱電子報</h4>
+          <h4>訂閱職缺快訊</h4>
           <form class="newsletter-form">
             <input type="email" placeholder="請輸入您的Email" required>
-            <button type="submit">訂閱</button>
+            <button type="submit"><i class="fas fa-paper-plane"></i> 訂閱</button>
           </form>
+          <p class="newsletter-privacy">訂閱即表示您同意我們的<a href="#">隱私政策</a></p>
         </div>
       </div>
     </div>
@@ -584,11 +1085,12 @@
     <div class="footer-divider"></div>
 
     <div class="footer-bottom">
-      <p class="copyright">© 2024 RedConsulto. All rights reserved.</p>
+      <p class="copyright">© 2024 菁英人才顧問. 版權所有.</p>
       <div class="footer-legal">
         <a href="#" class="legal-link">隱私政策</a>
         <a href="#" class="legal-link">服務條款</a>
         <a href="#" class="legal-link">Cookie政策</a>
+        <a href="#" class="legal-link">網站地圖</a>
       </div>
     </div>
   </div>
